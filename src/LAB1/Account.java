@@ -19,6 +19,9 @@ public class Account {
         this.customerId = customerId;
     }
 
+    public Account() {
+    }
+
     public Account(String accountId, String accountNumber, String accountType, LocalDateTime createdAt, String customerId) {
         this.accountId = accountId;
         this.accountNumber = accountNumber;
@@ -75,20 +78,6 @@ public class Account {
         this.customerId = customerId;
     }
 
-    public void withdraw(double amount){
-
-        if(amount >= balance){
-            System.out.println("Insufficient balance");
-        }
-        else if(amount<0){
-            System.out.println("the minimum withdraw must be greater than 0");
-        }
-        else{
-            balance-=amount;
-            System.out.println("successfully  withdraw:"+balance);
-        }
-
-    }
     public void deposit(double amount){
         if(amount>0){
             balance+=amount;
@@ -97,6 +86,19 @@ public class Account {
         else{
             System.out.println("amount must be greater than zero");
         }
+    }
+
+    public void withdraw(double amount) {
+
+        if (amount > balance) {
+            System.out.println("Insufficient balance");
+        } else if (amount <= 0) {
+            System.out.println("the minimum withdraw must be greater than 0");
+        } else {
+            balance -= amount;
+            System.out.println("successfully  withdraw:" + balance);
+        }
+
     }
 
     public void processTransaction(double amount,String type){
